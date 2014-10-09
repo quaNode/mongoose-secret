@@ -23,4 +23,8 @@ module.exports = function updatedPlugin (schema, options) {
 		this.set(path, createSecret(size));
 		next();
 	});
+
+	schema.methods.generateNewSecret = function(cb) {
+		return this.set(path, createSecret(size)).save(cb);
+	};
 };
