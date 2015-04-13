@@ -18,6 +18,7 @@ module.exports = function updatedPlugin (schema, options) {
 	schema.pre('save', function (next) {
 		if(this.get(path)) {
 			next();
+			return;
 		}
 		
 		this.set(path, createSecret(size));
